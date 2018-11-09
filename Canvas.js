@@ -6,6 +6,7 @@ class Canvas
 {
     constructor(width,height)
     {
+        this.entityManager = new EntityManager();
         createCanvas(windowWidth, windowHeight);
     }
 
@@ -21,5 +22,10 @@ class Canvas
     {
         test.render();
         entity.render();
+    }
+
+    static getEntityManager()
+    {
+        return this.entityManager;
     }
 }

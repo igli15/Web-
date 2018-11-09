@@ -6,6 +6,5 @@ class EntityManager
         this.entities = [];
     }
 
-
 }
 
