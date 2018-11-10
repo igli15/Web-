@@ -1,31 +1,37 @@
 /*jshint esversion: 6 */
-let entity;
-let test;
-
+let entitymanager;
 class Canvas
 {
     constructor(width,height)
     {
-        this.entityManager = new EntityManager();
+        entitymanager = new EntityManager();
         createCanvas(windowWidth, windowHeight);
+
+        this.test = new Entity();
+        this.entity = new Entity();
+
+        this.test.setPos(200,200);
+        this.entity.setPos(500,500);
     }
 
     start()
     {
-        entity = new Entity(0);
-        test = new Entity(0);
-    
-        test.setPos(200,200);
-        entity.setPos(800,500)
+        for(var i= entitymanager.entities.length - 1; i >=0; i--)
+        {
+           entitymanager.entities[i].start();
+        }
     }
     update()
     {
-        test.render();
-        entity.render();
+        for(var i= entitymanager.entities.length - 1; i >=0; i--)
+        {
+           entitymanager.entities[i].update();
+        }
     }
 
-    static getEntityManager()
+    static get getEntityManager()
     {
-        return this.entityManager;
+        console.log("getting entity manager");
+        return  entitymanager;
     }
 }

@@ -3,6 +3,6 @@ class Sprite extends Entity
 {
     constructor()
     {
-
+        
     } 
 }

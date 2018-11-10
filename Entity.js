@@ -3,11 +3,24 @@ class Entity
 {
 	constructor()
 	{
+		this.manager = Canvas.getEntityManager.addEntity(this);
+		
 		this.x = 0;
 		this.y = 0;
 		this.r = 100;
 		Entity.count += 1;
 		this.id = Entity.count;
+		
+	}
+
+	start()
+	{
+		console.log("started");
+	}
+
+	update()
+	{
+		this.render();
 	}
 
 	render()
