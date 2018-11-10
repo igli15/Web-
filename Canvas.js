@@ -1,22 +1,25 @@
 /*jshint esversion: 6 */
 let entitymanager;
+let renderer;
 class Canvas
 {
     constructor(width,height)
     {
         entitymanager = new EntityManager();
+        renderer = new Renderer();
+
         createCanvas(windowWidth, windowHeight);
 
-        this.test = new Entity();
+        this.test = new Sprite('Assets/test.png');
         this.entity = new Entity();
 
-        this.test.setPos(200,200);
+        this.test.setPos(windowWidth/2,windowHeight/2);
         this.entity.setPos(500,500);
     }
 
     start()
     {
-        for(var i= entitymanager.entities.length - 1; i >=0; i--)
+        for(var i= entitymanager.entities.length -1 ; i >=0; i--)
         {
            entitymanager.entities[i].start();
         }
@@ -27,11 +30,17 @@ class Canvas
         {
            entitymanager.entities[i].update();
         }
+
+        renderer.renderAllSprites();
     }
 
     static get getEntityManager()
     {
-        console.log("getting entity manager");
         return  entitymanager;
+    }
+
+    static get getRenderer()
+    {
+        return renderer;
     }
 }
