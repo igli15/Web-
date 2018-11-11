@@ -17,6 +17,7 @@ class Sprite extends Entity
 
     setPos(x,y)
     {
+        super.setPos(x,y);
         this.x = x;
         this.y = y;
     }
@@ -29,12 +30,13 @@ class Sprite extends Entity
 
     start()
     {
+        super.start();
         console.log("spriteStarted");
     }
     
     update()
     {
-        
+        super.update();
     }
 
     render()

@@ -1,6 +1,7 @@
 /*jshint esversion: 6 */
 let entitymanager;
 let renderer;
+
 class Canvas
 {
     constructor(width,height)
@@ -11,10 +12,12 @@ class Canvas
         createCanvas(windowWidth, windowHeight);
 
         this.test = new Sprite('Assets/test.png');
-        this.entity = new Entity();
+        //this.entity = new Entity();
 
         this.test.setPos(windowWidth/2,windowHeight/2);
-        this.entity.setPos(500,500);
+        this.componentTest = new Component();
+
+        this.test.addComponent(this.componentTest);
     }
 
     start()
