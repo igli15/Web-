@@ -28,6 +28,8 @@ class Entity
 		}
 	}
 
+	// pass in an instance of the component to add... 
+	//components have to be created before then passed in.
 	addComponent(component)
 	{
 		if(!(component instanceof Component))
@@ -42,6 +44,20 @@ class Entity
 		
 	}
 
+	//make sure to pass in a type of component to get.
+	getComponent(type)
+	{
+		for(let i = 0; i < this.components.length;i++)
+		{
+			if(this.components[i] instanceof type)
+			{
+				return this.components[i];
+			}
+		}
+
+		throw "there is no component of that type attached to this entity";
+	}
+
 	setPos(px,py)
 	{
 		this.x = px;
@@ -49,6 +65,6 @@ class Entity
 	}
 }
 
-Entity.count = 0;
+Entity.count = 0;  //how many entities have been created in total.
 
 
