@@ -12,8 +12,8 @@ class Canvas
 
         createCanvas(windowWidth, windowHeight);
 
-        this.test = new Sprite(AssetManager.getImage('test'));
-        //this.entity = new Entity();
+        this.test = new Button(AssetManager.getImage('test'),"BOX");
+        this.test.setWidth(124,64);
 
         this.test.setPos(windowWidth/2,windowHeight/2);
         

@@ -63,6 +63,11 @@ class Entity
 		this.x = px;
 		this.y = py;
 	}
+
+	onMouseClicked()
+	{
+
+	}
 }
 
 Entity.count = 0;  //how many entities have been created in total.

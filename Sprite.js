@@ -14,9 +14,6 @@ class Sprite extends Entity
 
         this.width = this.texture.width;
         this.height = this.texture.height;
-
-        this.colliderTest = new BoxCollider();
-        this.addComponent(this.colliderTest);
        
     } 
 
@@ -55,4 +52,9 @@ class Sprite extends Entity
        imageMode(CENTER);
        image(this.texture,this.x,this.y,this.width,this.height);
     }
+
+	onMouseClicked()
+	{
+        console.log("Clicked");
+	}
 }

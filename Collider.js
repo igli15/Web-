@@ -32,11 +32,7 @@ function mousePressed()
     {
         if(colliders[i].checkForMouseHover())
         {
-            console.log("CLICKED");
-        }
-        else
-        {
-            console.log("LUL");
+            colliders[i].parent.onMouseClicked();
         }
     }
 }
