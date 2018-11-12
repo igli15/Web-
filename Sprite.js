@@ -30,12 +30,6 @@ class Sprite extends Entity
         this.height = newHeight;
     }
 
-    preload()
-    {
-        super.preload();
-        console.log("loading");
-    }
-
     start()
     {
         super.start();

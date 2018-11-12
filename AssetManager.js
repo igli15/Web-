@@ -13,6 +13,7 @@ class AssetManager
     loadAssets()
     {
         this.addImage('test','Assets/testButton.png');
+        this.addImage('spriteSheet','Assets/skeletonSpritesheet.png');
     }
 
     //Adds it to the dictionary;

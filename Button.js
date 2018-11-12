@@ -19,12 +19,12 @@ class Button extends Sprite
         }
         else
         {
-            throw 'there is no type with that name!!'
+            throw 'there is no type with that name!!';
         }
     }
 
     onMouseClicked()
     {
-        console.log("clicked Button");
+        background("Gray");
     }
 }

@@ -16,6 +16,9 @@ class Canvas
         this.test.setWidth(124,64);
 
         this.test.setPos(windowWidth/2,windowHeight/2);
+
+        this.anim = new AnimationSprite(AssetManager.getImage('spriteSheet'),
+                                        9,4,35);
         
     }
 
