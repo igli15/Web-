@@ -20,8 +20,6 @@ class CircleCollider extends Collider
 
     checkForMouseHover()
     {
-        console.log(this.parent.x);
-        console.log(mouseX + " " + mouseY)
         if(dist(mouseX,mouseY,this.parent.x,this.parent.y) < this.radius)
         {
             return true;

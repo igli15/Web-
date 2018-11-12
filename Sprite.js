@@ -15,7 +15,7 @@ class Sprite extends Entity
         this.width = this.texture.width;
         this.height = this.texture.height;
 
-        this.colliderTest = new CircleCollider();
+        this.colliderTest = new BoxCollider();
         this.addComponent(this.colliderTest);
        
     } 

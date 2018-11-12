@@ -12,7 +12,7 @@ class AssetManager
     //Load your assets here.
     loadAssets()
     {
-        this.addImage('test','Assets/test.png');
+        this.addImage('test','Assets/testButton.png');
     }
 
     //Adds it to the dictionary;
