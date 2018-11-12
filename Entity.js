@@ -38,8 +38,8 @@ class Entity
 		}
 		else
 		{
-		component.parent = this;
-		this.components.push(component);
+			component.parent = this;
+			this.components.push(component);
 		}
 		
 	}

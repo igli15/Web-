@@ -1,18 +1,23 @@
 /*jshint esversion: 6 */
+
 class Sprite extends Entity
 {
-    constructor(pfilename)
+    constructor(ptexture)
     {
         super();
+       
         Canvas.getRenderer.addSprite(this);
         this.x = super.x;
         this.y = super.y;
-    
-        this.filename = pfilename;
-        this.texture = loadImage(pfilename);
 
-        this.width = 100;
-        this.height = 100;
+        this.texture = ptexture;
+
+        this.width = this.texture.width;
+        this.height = this.texture.height;
+
+        this.colliderTest = new CircleCollider();
+        this.addComponent(this.colliderTest);
+       
     } 
 
     setPos(x,y)
@@ -28,6 +33,12 @@ class Sprite extends Entity
         this.height = newHeight;
     }
 
+    preload()
+    {
+        super.preload();
+        console.log("loading");
+    }
+
     start()
     {
         super.start();
@@ -41,6 +52,7 @@ class Sprite extends Entity
 
     render()
     {
+       imageMode(CENTER);
        image(this.texture,this.x,this.y,this.width,this.height);
     }
 }

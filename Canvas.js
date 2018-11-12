@@ -2,6 +2,7 @@
 let entitymanager;
 let renderer;
 
+
 class Canvas
 {
     constructor(width,height)
@@ -11,13 +12,11 @@ class Canvas
 
         createCanvas(windowWidth, windowHeight);
 
-        this.test = new Sprite('Assets/test.png');
+        this.test = new Sprite(AssetManager.getImage('test'));
         //this.entity = new Entity();
 
         this.test.setPos(windowWidth/2,windowHeight/2);
-        this.componentTest = new Component();
-
-        this.test.addComponent(this.componentTest);
+        
     }
 
     start()
