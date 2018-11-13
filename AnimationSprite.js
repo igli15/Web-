@@ -19,7 +19,7 @@ class AnimationSprite extends Sprite
     render()
     {
         imageMode(CENTER);
-
+        
         if(this.frames > this.rows * this.cols)
         {
             this.frames = this.rows * this.cols;

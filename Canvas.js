@@ -18,7 +18,11 @@ class Canvas
         this.test.setPos(windowWidth/2,windowHeight/2);
 
         this.anim = new AnimationSprite(AssetManager.getImage('spriteSheet'),
-                                        9,4,35);
+                                        9,4,25);
+
+        this.map = new Map();
+        console.log(this.map.width);
+
         
     }
 
