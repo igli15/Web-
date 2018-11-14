@@ -56,6 +56,17 @@ class Map
         return output;
     }
 
+    createGraphicalTile(ptileset,pgid,prows,pcolumns)
+    {
+        if(ptileset != null)
+        {
+            var tile = new GraphicalTile(ptileset,pgid);
+            tile.x = pcolumns * 64;
+            tile.y = prows * 64;
+        }
+        else throw 'tileset is null';
+    }
+
     interpretMap()
     {
         for(var i = 0 ; i < this.layers.length; i++)
@@ -69,15 +80,7 @@ class Map
 
                     if(gid > 0)
                     {
-                        console.log(gid);
-                        var tileset = this.getTilesetForGid(gid);
-                        if(tileset != null)
-                        {
-                            var tile = new GraphicalTile(tileset,gid);
-                            tile.x = column * 64;
-                            tile.y = row* 64;
-                        }
-                        else throw 'tileset is null';
+                       this.createGraphicalTile(this.getTilesetForGid(gid),gid,row,column);
                     }
                 }
             }
