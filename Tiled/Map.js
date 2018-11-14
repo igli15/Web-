@@ -19,47 +19,19 @@ class Map
         this.objects = this.mapRep.getChildren('objectgroup');
         this.layers = this.mapRep.getChildren('layer');
 
-        
-       // console.log(this.tilesets[1].getNum('tilecount'));
-      // console.log(this.layers[0].getChild('data').getContent());
-
        this.convertData(this.layers[0],this.width,this.height);
-
-       for(var i = 0 ; i < this.layers.length; i++)
-       {
-            var allGids = this.convertData(this.layers[i],this.width,this.height);
-            for(var row = 0;row< allGids.length;row++)
-            {
-                for(var column = 0;column< allGids[row].length;column++)
-                {
-                    var gid = allGids[row][column];
-                    if(gid > 0)
-                    {
-                        var tileset = this.getTilesetForGid(gid);
-                        if(tileset != null)
-                        {
-                            var tile = new GraphicalTile(tileset,gid);
-                            tile.x = column * 64;
-                            tile.y = row* 64;
-                        }
-                    }
-                }
-            }
-       }
+       this.interpretMap();
     }
 
     getTilesetForGid(gid)
     {
         for(let i = 0; i < this.tilesets.length;i++)
         {
-            if(gid >= this.tilesets[i].getNum('firstgid') && gid< 
-                this.tilesets[i].getNum('firstgid') + this.tilesets[0].getNum('tilecount'))
+            if(gid >= this.tilesets[i].getNum('firstgid') && gid < 
+                this.tilesets[i].getNum('firstgid') + this.tilesets[i].getNum('tilecount'))
                 {
+                   // console.log(this.tilesets[i].getChild('image').getString(''));
                     return this.tilesets[i];
-                }
-                else
-                {
-                    return null;
                 }
         }
     }
@@ -82,5 +54,33 @@ class Map
         }
         //console.log(output);
         return output;
+    }
+
+    interpretMap()
+    {
+        for(var i = 0 ; i < this.layers.length; i++)
+       {
+            var allGids = this.convertData(this.layers[i],this.width,this.height);
+            for(var row = 0;row< allGids.length;row++)
+            {
+                for(var column = 0;column< allGids[row].length;column++)
+                {
+                    var gid = allGids[row][column];
+
+                    if(gid > 0)
+                    {
+                        console.log(gid);
+                        var tileset = this.getTilesetForGid(gid);
+                        if(tileset != null)
+                        {
+                            var tile = new GraphicalTile(tileset,gid);
+                            tile.x = column * 64;
+                            tile.y = row* 64;
+                        }
+                        else throw 'tileset is null';
+                    }
+                }
+            }
+       }
     }
 }

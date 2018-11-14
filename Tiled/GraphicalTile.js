@@ -11,8 +11,8 @@ class GraphicalTile extends AnimationSprite
         var columns = tileset.getNum('columns');
         var imageSource = image.getString('source');
 
-        //console.log('Assets/' + imageSource);
-        super(AssetManager.getImage('spriteSheet'),columns,tilecount/columns,gid - firstGid);
+        console.log('Assets/' + imageSource);
+        super(AssetManager.getImage(imageSource.split('.')[0]),columns,tilecount/columns,gid - firstGid);
         //this.setFrame(gid - firstGid);   
     }
 }

@@ -14,9 +14,10 @@ class AssetManager
     loadAssets()
     {
         this.addImage('test','Assets/testButton.png');
-        this.addImage('spriteSheet','Assets/skeletonSpritesheet.png');
+        this.addImage('skeletonSpritesheet','Assets/skeletonSpritesheet.png');
         this.addTmxFile('map','Assets/test.tmx');
-        //this.addImage('tilesheet','Assets/tilesheet.png')
+        this.addImage('tilesheet','Assets/tilesheet.png')
+        this.addImage('BlueSpaceship','Assets/BlueSpaceship.png')
         //console.log(AssetManager.getTmx('map'));
     }
 
@@ -44,11 +45,6 @@ class AssetManager
         if(tmxFiles[name] != null)
         return tmxFiles[name];
         else throw "there is no asset with that name";
-    }
-
-    static loadImageLate(pfilename)
-    {
-        return loadImage(pfilename);
     }
     
 }

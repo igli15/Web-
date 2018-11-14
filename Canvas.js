@@ -17,9 +17,6 @@ class Canvas
 
         this.test.setPos(windowWidth/2,windowHeight/2);
 
-        this.anim = new AnimationSprite(AssetManager.getImage('spriteSheet'),
-                                        9,4,0);
-
         this.map = new Map(AssetManager.getTmx('map'));
        // console.log(this.map.layers[0].getChild('data').getContent());
 

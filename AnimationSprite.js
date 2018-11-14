@@ -4,7 +4,7 @@ class AnimationSprite extends Sprite
     constructor(spritesheet,pcols,prows,pframes)
     {
         super(spritesheet);
-        
+        angleMode(DEGREES);
         this.cols = pcols;
         this.rows = prows;
         this.frames = pframes;
@@ -14,12 +14,12 @@ class AnimationSprite extends Sprite
 
         this.x = 100;
         this.y = 100;
+        
+        this.rotation = 0;
     }
 
     render()
     {
-        imageMode(CENTER);
-        
         if(this.frames > this.rows * this.cols)
         {
             this.frames = this.rows * this.cols;
@@ -33,7 +33,12 @@ class AnimationSprite extends Sprite
 
         this.image = this.texture.get(this.frameX * this.frameWidth, this.frameY * this.frameHeight, this.frameWidth, this.frameHeight);
 
-        image(this.image, this.x, this.y, this.frameWidth,this.frameHeight);
+        push();
+        translate(this.x,this.y);
+        rotate(this.rotation);
+        imageMode(CENTER);
+        image(this.image, 0, 0 , this.frameWidth,this.frameHeight);
+        pop();
     }
 
     setFrame(pframe)
