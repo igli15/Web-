@@ -1,12 +1,13 @@
 /*jshint esversion: 6 */
 
-class Button extends Sprite
+class Button extends Entity
 {
-    constructor(texture,TYPE)
+    constructor(pwidth,pheight,TYPE)
     {  
-        super(texture);
-        this.texture = texture;
-        
+        super();
+        this.width = pwidth;
+        this.height = pheight;
+
         if(TYPE == "CIRCLE")
         {
             this.collider = new CircleCollider();
@@ -25,6 +26,6 @@ class Button extends Sprite
 
     onMouseClicked()
     {
-        background("Gray");
+       console.log("clicked");
     }
 }

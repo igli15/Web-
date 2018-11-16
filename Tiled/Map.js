@@ -21,11 +21,13 @@ class Map
         this.renderOrder = this.mapRep.getString('renderorder');
         this.nextObjId = this.mapRep.getNum('nextobjectid');
         this.tilesets = this.mapRep.getChildren('tileset');
-        this.objects = this.mapRep.getChildren('objectgroup');
+        this.objectGroups = this.mapRep.getChildren('objectgroup');
         this.layers = this.mapRep.getChildren('layer');
+
 
        this.convertData(this.layers[0],this.width,this.height);
        this.interpretMap();
+       this.interpretMapObjects();
     }
 
     //returns the tileset by giving the tile gid
@@ -69,8 +71,8 @@ class Map
         if(ptileset != null)
         {
             var tile = new GraphicalTile(ptileset,pgid);
-            tile.x = pcolumns * 64;
-            tile.y = prows * 64;
+            tile.x = pcolumns * ptileset.getNum('tilewidth');
+            tile.y = prows * ptileset.getNum('tileheight');
             tile.rotation = protation;
             console.log(tile.frameWidth);
         }
@@ -124,4 +126,53 @@ class Map
             }
        }
     }
+
+    interpretMapObjects()
+       {
+           for(var i = 0; i < this.objectGroups.length;i++)
+           {
+               var objects = this.objectGroups[i].getChildren("object");
+               for(var j = 0; j< objects.length;j++)
+               {
+                   if(objects[j].getChild("ellipse"))
+                   {
+                       if(objects[j].getString("type") == "Button")
+                       {
+                           var width = objects[j].getNum('width');
+                           var height = objects[j].getNum('height');
+                            var button = new Button(width,height,"CIRCLE");
+                            button.x = objects[j].getNum('x');
+                            button.y = objects[j].getNum('y');
+                       }
+                   }
+                   else if(objects[j].getChild("polygon"))
+                   {
+                       console.log("polygon was found");
+                   }
+                   else 
+                   {
+                    if(objects[j].getString("type") == "Button")
+                    {
+                        var width = objects[j].getNum('width');
+                        var height = objects[j].getNum('height');
+                         var button = new Button(width,height,"BOX");
+                         button.x = objects[j].getNum('x');
+                         button.y = objects[j].getNum('y');
+                    }
+
+                       if(objects[j].getChild("text"))
+                       {
+                           var textObj = objects[j].getChild("text");
+    
+                           var text = new Text(AssetManager.getFont(textObj.getString("fontfamily")));
+                           text.size = textObj.getString('pixelsize');
+                           text.color = textObj.getString("color");
+                           text.x = objects[j].getNum('x');
+                           text.y = objects[j].getNum('y');
+                           text.string = textObj.getContent();                       
+                       }
+                   }
+               }
+           }
+       }
 }

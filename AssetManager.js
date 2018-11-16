@@ -1,7 +1,7 @@
 /*jshint esversion: 6 */
-let images = new Array();
-let tmxFiles = new Array();
-
+let images = [];
+let tmxFiles = [];
+let fonts = [];
 class AssetManager
 {
 
@@ -17,8 +17,8 @@ class AssetManager
         this.addImage('skeletonSpritesheet','Assets/skeletonSpritesheet.png');
         this.addTmxFile('map','Assets/test.tmx');
         this.addImage('tilesheet','Assets/tilesheet.png')
-        this.addImage('BlueSpaceship','Assets/BlueSpaceship.png')
-        //console.log(AssetManager.getTmx('map'));
+        this.addImage('WebTileset','Assets/WebTileset.png')
+        this.addFont("Roboto","Assets/Roboto-Regular.ttf");
     }
 
     //Adds it to the dictionary;
@@ -30,6 +30,11 @@ class AssetManager
     addTmxFile(name,pfilename)
     {
         tmxFiles[name] = loadXML(pfilename);
+    }
+
+    addFont(name,pfilename)
+    {
+        fonts[name] = loadFont(pfilename);
     }
 
     //get your image when you need it.
@@ -47,4 +52,10 @@ class AssetManager
         else throw "there is no asset with that name";
     }
     
+    static getFont(name)
+    {
+        if(fonts[name] != null)
+        return fonts[name];
+        else throw "there is no asset with that name";
+    }
 }

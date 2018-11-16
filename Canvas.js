@@ -12,14 +12,8 @@ class Canvas
 
         createCanvas(windowWidth, windowHeight);
 
-        this.test = new Button(AssetManager.getImage('test'),"BOX");
-        this.test.setWidth(124,64);
-
-        this.test.setPos(windowWidth/2,windowHeight/2);
-
         this.map = new Map(AssetManager.getTmx('map'));
        // console.log(this.map.layers[0].getChild('data').getContent());
-
         
     }
 
