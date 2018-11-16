@@ -1,4 +1,9 @@
 /*jshint esversion: 6 */
+
+let ninetyDegreedRotFlag = 0xa0000000;
+let oneEightyDegreedRotFlag = 0xc0000000;
+let twoSeventyDegreedRotFlag = 0x60000000;
+
 class Map
 {
     constructor(pmap)
@@ -23,6 +28,7 @@ class Map
        this.interpretMap();
     }
 
+    //returns the tileset by giving the tile gid
     getTilesetForGid(gid)
     {
         for(let i = 0; i < this.tilesets.length;i++)
@@ -36,6 +42,7 @@ class Map
         }
     }
 
+    //converts the data 1D array to an 2D array
     convertData(layer,width,height)
     {
         var output = [];
@@ -56,17 +63,45 @@ class Map
         return output;
     }
 
-    createGraphicalTile(ptileset,pgid,prows,pcolumns)
+    //creates the sprite from the tilesheet
+    createGraphicalTile(ptileset,pgid,prows,pcolumns,protation)
     {
         if(ptileset != null)
         {
             var tile = new GraphicalTile(ptileset,pgid);
             tile.x = pcolumns * 64;
             tile.y = prows * 64;
+            tile.rotation = protation;
+            console.log(tile.frameWidth);
         }
         else throw 'tileset is null';
     }
 
+    //calculates if the tile is rotated or not
+    calculateTileRotation(currentGid)
+    {
+        if((currentGid & ninetyDegreedRotFlag) == -1610612736)
+        {
+            return 90;
+                           
+        }
+        else if(( currentGid & oneEightyDegreedRotFlag ) == -1073741824)
+        {
+             return 180;
+                           
+         }
+        else if((currentGid & twoSeventyDegreedRotFlag) == 1610612736)
+        {
+            return 270;
+                        
+        }
+        else 
+         {
+            return  0;
+         }
+    }
+
+    //interprets the tiles of the map
     interpretMap()
     {
         for(var i = 0 ; i < this.layers.length; i++)
@@ -77,10 +112,13 @@ class Map
                 for(var column = 0;column< allGids[row].length;column++)
                 {
                     var gid = allGids[row][column];
-
+                    var rotation = 0;
                     if(gid > 0)
                     {
-                       this.createGraphicalTile(this.getTilesetForGid(gid),gid,row,column);
+                       var currentGid = gid;
+                       var rotation = this.calculateTileRotation(currentGid);
+                       currentGid &= ~(0xe0000000);
+                       this.createGraphicalTile(this.getTilesetForGid(currentGid),currentGid,row,column,rotation);
                     }
                 }
             }
