@@ -1,8 +1,6 @@
 /*jshint esversion: 6 */
 let entitymanager;
 let renderer;
-
-
 class Canvas
 {
     constructor(width,height)
@@ -10,11 +8,11 @@ class Canvas
         entitymanager = new EntityManager();
         renderer = new Renderer();
 
-        createCanvas(windowWidth, windowHeight);
-
+      this.canvas=  createCanvas(windowWidth,windowHeight);
+        //this.canvas.parent("can");
         this.map = new Map(AssetManager.getTmx('map'));
        // console.log(this.map.layers[0].getChild('data').getContent());
-        
+       
     }
 
     start()
@@ -42,5 +40,10 @@ class Canvas
     static get getRenderer()
     {
         return renderer;
+    }
+
+    static get getCanvas()
+    {
+        return this.canvas;
     }
 }

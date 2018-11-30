@@ -74,6 +74,7 @@ class Map
             tile.x = pcolumns * ptileset.getNum('tilewidth');
             tile.y = prows * ptileset.getNum('tileheight');
             tile.rotation = protation;
+
             console.log(tile.frameWidth);
         }
         else throw 'tileset is null';

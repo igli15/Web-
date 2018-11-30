@@ -15,6 +15,9 @@ class AnimationSprite extends Sprite
         this.x = 100;
         this.y = 100;
         
+        this.initWindowWidth = windowWidth;
+        this.initWindowHeight = windowHeight;
+
         this.rotation = 0;
     }
 
@@ -32,7 +35,7 @@ class AnimationSprite extends Sprite
         this.frameY = floor(this.frames/this.cols);
 
         this.image = this.texture.get(this.frameX * this.frameWidth, this.frameY * this.frameHeight, this.frameWidth, this.frameHeight);
-
+        
         push();
         translate(this.x,this.y);
         rotate(this.rotation);
@@ -45,4 +48,5 @@ class AnimationSprite extends Sprite
     {
         this.frames = pframe;
     }
-}   
+
+}  

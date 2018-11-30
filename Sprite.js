@@ -15,7 +15,7 @@ class Sprite extends Entity
         this.rotation = 0;
         this.width = this.texture.width;
         this.height = this.texture.height;
-
+        
         imageMode(CENTER);
        
     } 
@@ -49,7 +49,7 @@ class Sprite extends Entity
         push();
         translate(this.x,this.y);
         rotate(this.rotation);
-       image(this.texture,0,0,this.width,this.height);
+       image(this.texture,0,0,this.width  ,this.height );
        pop();
     }
 
