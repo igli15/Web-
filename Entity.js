@@ -9,6 +9,7 @@ class Entity
 		this.y = 0;
 		Entity.count += 1;
 		this.id = Entity.count;
+
 		
 	}
 
