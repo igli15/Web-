@@ -35,7 +35,7 @@ class AnimationSprite extends Sprite
         this.frameY = floor(this.frames/this.cols);
 
         this.image = this.texture.get(this.frameX * this.frameWidth, this.frameY * this.frameHeight, this.frameWidth, this.frameHeight);
-        
+
         push();
         translate(this.x,this.y);
         rotate(this.rotation);

@@ -1,6 +1,7 @@
 /*jshint esversion: 6 */
 
 let assetmanager;
+
 function preload()
 {
 	assetmanager = new AssetManager();
