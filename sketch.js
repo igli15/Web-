@@ -15,12 +15,6 @@ function setup()
 
 function draw() 
 {
-	background(0);
+	//background(100,100,100,1);
 	this.canvas.update();
-}
-
-function windowResized() 
-{
-	resizeCanvas(windowWidth, windowHeight);
-	//Canvas.getCanvas.size(window.innerWidth,window.innerHeight);
 }

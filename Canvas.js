@@ -8,7 +8,11 @@ class Canvas
         entitymanager = new EntityManager();
         renderer = new Renderer();
 
-      this.canvas=  createCanvas(windowWidth,windowHeight);
+      this.canvas=  createCanvas(width,height);
+
+        this.canvas.style("width","100%");
+        this.canvas.style("height","100%");
+        this.canvas.style("background-color","black");
         //this.canvas.parent("can");
         this.map = new Map(AssetManager.getTmx('map'));
        // console.log(this.map.layers[0].getChild('data').getContent());
